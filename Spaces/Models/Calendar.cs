@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Spaces.Models
@@ -20,5 +21,10 @@ namespace Spaces.Models
         [Required]
         public bool IsSecuirtyDepositReturned { get; set; }
         public DateTime Date { get; set; }
+
+        internal List<Calendar> ToList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

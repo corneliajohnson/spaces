@@ -28,6 +28,7 @@ namespace Spaces
 
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IPaymentRepository, PaymentRepository>();
+            services.AddTransient<ICalendarRepository, CalendarRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
