@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Spaces.Models
@@ -8,7 +9,9 @@ namespace Spaces.Models
         public int Id { get; set; }
         [Required]
         public int UserProfileId { get; set; }
+        public UserProfile UserProfile { get; set; }
         public int TenantId { get; set; }
+        public Tenant Tenant { get; set; }
         [Required]
         public string Street { get; set; }
         [Required]
@@ -38,5 +41,9 @@ namespace Spaces.Models
         public string Notes { get; set; }
         public string CheckOutTime { get; set; }
         public string CheckInTime { get; set; }
+
+        public List<Payment> Payments { get; set; }
+        public List<Request> Requests { get; set; }
+        public List<Calendar> Calendars { get; set; }
     }
 }

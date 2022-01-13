@@ -27,6 +27,7 @@ namespace Spaces
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+            services.AddTransient<IPaymentRepository, PaymentRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Spaces.Models
@@ -17,5 +18,6 @@ namespace Spaces.Models
         [Required]
         public string FirebaseId { get; set; }
         public DateTime DateCreated { get; set; }
+        public List<Property> Properties { get; set; }
     }
 }

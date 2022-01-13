@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Spaces.Models
 {
@@ -10,6 +8,7 @@ namespace Spaces.Models
         public int Id { get; set; }
         [Required]
         public int PropertyId { get; set; }
+        public Property Property { get; set; }
         [Required]
         public string Synopsis { get; set; }
         [Required]
