@@ -22,15 +22,15 @@ namespace Spaces.Models
         public string Zip { get; set; }
         public decimal MonthlyMortageAmount { get; set; }
         public decimal SecurityDeposit { get; set; }
-        public DateTime DateAquired { get; set; }
+        public DateTime DateAcquired { get; set; }
         public decimal WeekdayPrice { get; set; }
         public decimal WeekendPrice { get; set; }
         public string Image { get; set; }
         public decimal MonthlyTargetProfit { get; set; }
-        public int MonthlyTargetBooking { get; set; }
-        public decimal AverageMonthlyProfit { get; set; }
-        public decimal AverageMonthlyMaintenance { get; set; }
-        public decimal TweleveMonthProfirLoss { get; set; }
+        public int MonthlyTargetBookings { get; set; }
+        public decimal AverageMontlyProfit { get; set; }
+        public decimal AverageMontlyMaintenance { get; set; }
+        public decimal TwelveMonthProfitLoss { get; set; }
         public decimal ThirtyDayProfitLoss { get; set; }
         public decimal AllTimeProfitLoss { get; set; }
         public decimal AllTimeMaintenance { get; set; }
@@ -41,7 +41,7 @@ namespace Spaces.Models
         }
 
         public decimal AllTimeMortageCost { get; set; }
-        public decimal TweleveMonthProfit { get; set; }
+        public decimal TwelveMonthProfit { get; set; }
         public decimal ThirtyDayProfit { get; set; }
         public decimal AllTimeProfit { get; set; }
         public string Notes { get; set; }

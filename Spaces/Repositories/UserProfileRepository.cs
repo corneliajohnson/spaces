@@ -23,7 +23,9 @@ namespace Spaces.Repositories
 
         public UserProfile GetById(int id)
         {
-            return _context.UserProfile.FirstOrDefault(p => p.Id == id);
+            return _context.UserProfile
+                .Include(user => user.Properties)
+                .FirstOrDefault(user => user.Id == id);
         }
 
         public void Add(UserProfile userProfile)

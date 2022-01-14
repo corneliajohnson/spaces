@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS UserProfile;
 
 
 CREATE TABLE [UserProfile] (
-  [Id] integer not null PRIMARY KEY,
+  [Id] integer PRIMARY KEY,
   [Image] nvarchar(255),
   [FirstName] nvarchar(255) not null,
   [LastName] nvarchar(255) not null,
@@ -31,7 +31,7 @@ CREATE TABLE [UserProfile] (
 );
 
 CREATE TABLE [Tenant] (
-  [Id] integer NOT NULL PRIMARY KEY,
+  [Id] integer PRIMARY KEY,
   [FirstName] nvarchar(255) NOT NULL,
   [LastName] nvarchar(255) NOT NULL,
   [Note] nvarchar(255),
@@ -40,13 +40,14 @@ CREATE TABLE [Tenant] (
   [Street] nvarchar(255),
   [City] nvarchar(255),
   [State] nvarchar(255),
-  [Zip] integer
+  [Zip] integer,
+  [isActive] bit NOT NULL
 
   CONSTRAINT UQ_TenantEmail UNIQUE(Email)
 );
 
 CREATE TABLE [Property] (
-  [Id] integer NOT NULL PRIMARY KEY IDENTITY,
+  [Id] integer PRIMARY KEY IDENTITY,
   [UserProfileId] integer NOT NULL,
   [Street] nvarchar(255) NOT NULL,
   [City] nvarchar(255) NOT NULL,
@@ -60,8 +61,8 @@ CREATE TABLE [Property] (
   [Image] nvarchar(255),
   [MonthlyTargetProfit] decimal,
   [MonthlyTargetBookings] integer,
-  [AverageMontlyProfit] decimal,
-  [AverageMontlyMaintenance] decimal,
+  [AverageMonthlyProfit] decimal,
+  [AverageMonthlyMaintenance] decimal,
   [TwelveMonthProfitLoss] decimal,
   [ThirtyDayProfitLoss] decimal,
   [AllTimeProfitLoss] decimal,
@@ -73,14 +74,15 @@ CREATE TABLE [Property] (
   [TenantId] integer,
   [Notes] nvarchar(255),
   [CheckOutTime] nvarchar(255),
-  [CheckInTime] nvarchar(255)
+  [CheckInTime] nvarchar(255),
+  [isActive] bit NOT NULL
 
   CONSTRAINT [FK_Property_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id]),
   CONSTRAINT [FK_Property_Tenant] FOREIGN KEY ([TenantId]) REFERENCES [Tenant] ([Id])
 );
 
 CREATE TABLE [Request] (
-  [Id] integer NOT NULL PRIMARY KEY,
+  [Id] integer PRIMARY KEY,
   [PropertyId] integer NOT NULL,
   [Synopsis] nvarchar(255) NOT NULL,
   [Price] decimal,
@@ -88,32 +90,35 @@ CREATE TABLE [Request] (
   [IsComplete] bit,
   [Note] nvarchar(255),
   [DateCompleted] datetime,
-  [DateAdded] datetime
+  [DateAdded] datetime,
+  [isActive] bit NOT NULL
 
   CONSTRAINT [FK_Request_Property] FOREIGN KEY ([PropertyId]) REFERENCES [Property] ([Id])
 );
 
 CREATE TABLE [Payment] (
-  [Id] integer NOT NULL PRIMARY KEY,
+  [Id] integer PRIMARY KEY,
   [PropertyId] integer NOT NULL,
   [TenantId] integer NOT NULL,
   [Date] datetime NOT NULL,
   [PaymentAmount] decimal NOT NULL,
-  [IsSecurityDeposit] bit NOT NULL
+  [IsSecurityDeposit] bit NOT NULL,
+  [isActive] bit NOT NULL
 
   CONSTRAINT [FK_Payment_Property] FOREIGN KEY ([PropertyId]) REFERENCES [Property] ([Id]),
   CONSTRAINT [FK_Payment_Tenant] FOREIGN KEY ([TenantId]) REFERENCES [Tenant] ([Id])
 );
 
 CREATE TABLE [Calendar] (
-  [Id] integer NOT NULL PRIMARY KEY,
+  [Id] integer PRIMARY KEY,
   [PropertyId] integer NOT NULL,
   [TenantId] integer NOT NULL,
   [PaymentAmount] decimal,
   [IsPaidInFull] bit NOT NULL,
   [IsSecurityDepositPaid] bit NOT NULL,
   [IsSecurityDepositReturned] bit,
-  [Date] datetime
+  [Date] datetime,
+  [isActive] bit NOT NULL
 
   CONSTRAINT [FK_Calendar_Property] FOREIGN KEY ([PropertyId]) REFERENCES [Property] ([Id]),
   CONSTRAINT [FK_Calendar_Tenant] FOREIGN KEY ([TenantId]) REFERENCES [Tenant] ([Id])

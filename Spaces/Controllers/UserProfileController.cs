@@ -6,10 +6,10 @@ namespace Spaces.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BeanVarietyController : ControllerBase
+    public class UserProfileController : ControllerBase
     {
         private readonly IUserProfileRepository _userProfileRepository;
-        public BeanVarietyController(IUserProfileRepository userProfileRepository)
+        public UserProfileController(IUserProfileRepository userProfileRepository)
         {
             _userProfileRepository = userProfileRepository;
         }
