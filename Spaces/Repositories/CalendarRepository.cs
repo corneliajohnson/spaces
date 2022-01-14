@@ -68,7 +68,7 @@ namespace Spaces.Repositories
             _context.SaveChanges();
         }
 
-        public void Add(CalendarRepository calendar)
+        public void Add(Calendar calendar)
         {
             _context.Add(calendar);
             _context.SaveChanges();

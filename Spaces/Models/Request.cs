@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Spaces.Models
@@ -17,5 +18,10 @@ namespace Spaces.Models
         public string Note { get; set; }
         public DateTime DateCompleted { get; set; }
         public DateTime DateAdded { get; set; }
+
+        internal List<Request> ToList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace Spaces.Repositories
 {
     public interface ICalendarRepository
     {
-        void Add(CalendarRepository calendar);
+        void Add(Calendar calendar);
         void Delete(int id);
         List<Calendar> GetByDate(DateTime date);
         Calendar GetById(int id);

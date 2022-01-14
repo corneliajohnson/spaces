@@ -3,57 +3,59 @@ using Spaces.Models;
 using Spaces.Repositories;
 using Spaces.Repository;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Spaces.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PaymentController : Controller
+    public class CalendarController : Controller
     {
-        private readonly IPaymentRepository _paymentRepository;
+        private readonly ICalendarRepository _calendarRepository;
         private readonly IUserProfileRepository _userProfileRepository;
 
-        public PaymentController(IPaymentRepository paymentRepository, IUserProfileRepository userProfileRepository)
+        public CalendarController( ICalendarRepository calendarRepository,  IUserProfileRepository userProfileRepository)
         {
-            _paymentRepository = paymentRepository;
+            _calendarRepository = calendarRepository;
             _userProfileRepository = userProfileRepository;
         }
 
         [HttpPost]
-        public IActionResult Post(Payment payment)
+        public IActionResult Post(Calendar calendar)
         {
-            payment.Date = DateTime.Now;
-            _paymentRepository.Add(payment);
-            return CreatedAtAction("Get", new { id = payment.Id }, payment);
+            _calendarRepository.Add(calendar);
+            return CreatedAtAction("Get", new { id = calendar.Id }, calendar);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Payment payment)
+        public IActionResult Put(int id, Calendar calendar)
         {
-            var p = _paymentRepository.GetById(id);
-            if (p == null)
+            var c = _calendarRepository.GetById(id);
+            if (c == null)
             {
                 return NotFound();
             }
 
-            if (id != payment.Id)
+            if (id != calendar.Id)
             {
                 return BadRequest();
             }
 
-            _paymentRepository.Update(payment);
+            _calendarRepository.Update(calendar);
             return NoContent();
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var payment = _paymentRepository.GetById(id);
-            if (payment == null)
+            var calendar = _calendarRepository.GetById(id);
+            if (calendar == null)
             {
                 return NotFound();
             }
-            return Ok(payment);
+            return Ok(calendar);
         }
 
         [HttpGet("user/{id}")]
@@ -65,8 +67,8 @@ namespace Spaces.Controllers
             {
                 BadRequest();
             }
-            var payments = _paymentRepository.GetByUserId(id);
-            return Ok(payments);
+            var calendars = _calendarRepository.GetByUserId(id);
+            return Ok(calendars);
         }
 
         [HttpGet("tenant/{id}")]
@@ -78,8 +80,8 @@ namespace Spaces.Controllers
             //{
             //    BadRequest();
             //}
-            var payments = _paymentRepository.GetByTenantId(id);
-            return Ok(payments);
+            var calendars = _calendarRepository.GetByTenantId(id);
+            return Ok(calendars);
         }
 
         [HttpGet("property/{id}")]
@@ -91,35 +93,28 @@ namespace Spaces.Controllers
             //{
             //    BadRequest();
             //}
-            var payments = _paymentRepository.GetByPropertyId(id);
-            return Ok(payments);
+            var calendars = _calendarRepository.GetByPropertyId(id);
+            return Ok(calendars);
         }
 
-        [HttpGet("bymonth")]
-        public IActionResult GetByMonth(DateTime date)
+        [HttpGet("date")]
+        public IActionResult GetBydate(DateTime date)
         {
-            var payments = _paymentRepository.GetByMonth(date);
-            return Ok(payments);
-        }
-
-        [HttpGet("daterange")]
-        public IActionResult GetByDateRange(DateTime startDate, DateTime endDate)
-        {
-            var payments = _paymentRepository.GetByDateRange(startDate, endDate);
-            return Ok(payments);
+            var calendars = _calendarRepository.GetByDate(date);
+            return Ok(calendars);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var payment = _paymentRepository.GetById(id);
+            var calendar = _calendarRepository.GetById(id);
             //var currentUser = GetCurrentUserProfile();
             //check that ribbon exist and belongs to user
-            if (payment == null)
+            if (calendar == null)
             {
                 return NotFound();
             }
-            _paymentRepository.Delete(id);
+            _calendarRepository.Delete(id);
             return NoContent();
         }
     }
