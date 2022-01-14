@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Spaces.Models;
 using Spaces.Repository;
 
 namespace Spaces.Controllers
@@ -24,12 +25,38 @@ namespace Spaces.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var variety = _userProfileRepository.GetById(id);
-            if (variety == null)
+            var userProfile = _userProfileRepository.GetById(id);
+            if (userProfile == null)
             {
                 return NotFound();
             }
-            return Ok(variety);
+            return Ok(userProfile);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, UserProfile userProfile)
+        {
+            var up = _userProfileRepository.GetById(id);
+            if (up== null)
+            {
+                return NotFound();
+            }
+
+            if (id != up.Id)
+            {
+                return BadRequest();
+            }
+
+            _userProfileRepository.Update(userProfile);
+            return NoContent();
+        }
+
+        [HttpPost]
+        public IActionResult Post(UserProfile userProfile)
+        {
+            _userProfileRepository.Add(userProfile);
+            return CreatedAtAction("Get", new { id = userProfile.Id }, userProfile);
+        }
+
     }
 }

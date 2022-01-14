@@ -53,7 +53,7 @@ namespace Spaces.Controllers
             return Ok(property);
         }
 
-        [HttpGet("user/{id}")]
+        [HttpGet("{id}/user")]
         public IActionResult GetByUserId(int id)
         {
             //check that user exist

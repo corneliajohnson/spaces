@@ -3,9 +3,7 @@ using Spaces.Models;
 using Spaces.Repositories;
 using Spaces.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Spaces.Controllers
 {
@@ -58,7 +56,7 @@ namespace Spaces.Controllers
             return Ok(calendar);
         }
 
-        [HttpGet("user/{id}")]
+        [HttpGet("{id}/user")]
         public IActionResult GetByUserId(int id)
         {
             //check that user exist
@@ -71,7 +69,7 @@ namespace Spaces.Controllers
             return Ok(calendars);
         }
 
-        [HttpGet("tenant/{id}")]
+        [HttpGet("{id}/tenant")]
         public IActionResult GetByTenantId(int id)
         {
             //check that tenant exist
@@ -84,7 +82,7 @@ namespace Spaces.Controllers
             return Ok(calendars);
         }
 
-        [HttpGet("property/{id}")]
+        [HttpGet("{id}/property")]
         public IActionResult GetByPropertyId(int id)
         {
             //check that property exist

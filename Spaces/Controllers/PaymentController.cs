@@ -56,7 +56,7 @@ namespace Spaces.Controllers
             return Ok(payment);
         }
 
-        [HttpGet("user/{id}")]
+        [HttpGet("{id}/user")]
         public IActionResult GetByUserId(int id)
         {
             //check that user exist
@@ -69,7 +69,7 @@ namespace Spaces.Controllers
             return Ok(payments);
         }
 
-        [HttpGet("tenant/{id}")]
+        [HttpGet("{id}/tenant")]
         public IActionResult GetByTenantId(int id)
         {
             //check that tenant exist
@@ -82,7 +82,7 @@ namespace Spaces.Controllers
             return Ok(payments);
         }
 
-        [HttpGet("property/{id}")]
+        [HttpGet("{id}/property")]
         public IActionResult GetByPropertyId(int id)
         {
             //check that property exist

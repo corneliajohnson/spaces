@@ -7,5 +7,7 @@ namespace Spaces.Repository
     {
         List<UserProfile> GetAll();
         UserProfile GetById(int id);
+        void Update(UserProfile userProfile);
+        void Add(UserProfile userProfile);
     }
 }
