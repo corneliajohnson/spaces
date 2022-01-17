@@ -18,5 +18,6 @@ namespace Spaces.Models
         public decimal PaymentAmount {get; set;}
         [Required]
         public bool IsSecurityDeposit { get; set; }
+        public bool isActive { get; set; }
     }
 }

@@ -28,8 +28,8 @@ namespace Spaces.Models
         public string Image { get; set; }
         public decimal MonthlyTargetProfit { get; set; }
         public int MonthlyTargetBookings { get; set; }
-        public decimal AverageMontlyProfit { get; set; }
-        public decimal AverageMontlyMaintenance { get; set; }
+        public decimal AverageMonthlyProfit { get; set; }
+        public decimal AverageMonthlyMaintenance { get; set; }
         public decimal TwelveMonthProfitLoss { get; set; }
         public decimal ThirtyDayProfitLoss { get; set; }
         public decimal AllTimeProfitLoss { get; set; }
@@ -51,5 +51,6 @@ namespace Spaces.Models
         public List<Payment> Payments { get; set; }
         public List<Request> Requests { get; set; }
         public List<Calendar> Calendars { get; set; }
+        public bool isActive { get; set; }
     }
 }

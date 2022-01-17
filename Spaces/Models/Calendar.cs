@@ -26,5 +26,6 @@ namespace Spaces.Models
         {
             throw new NotImplementedException();
         }
+        public bool isActive { get; set; }
     }
 }
