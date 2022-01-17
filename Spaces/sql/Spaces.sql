@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS UserProfile;
 
 
 CREATE TABLE [UserProfile] (
-  [Id] integer PRIMARY KEY,
+  [Id] INTEGER NOT NULL PRIMARY KEY IDENTITY,
   [Image] nvarchar(255),
   [FirstName] nvarchar(255) not null,
   [LastName] nvarchar(255) not null,
@@ -31,7 +31,7 @@ CREATE TABLE [UserProfile] (
 );
 
 CREATE TABLE [Tenant] (
-  [Id] integer PRIMARY KEY,
+  [Id] INTEGER NOT NULL PRIMARY KEY IDENTITY,
   [FirstName] nvarchar(255) NOT NULL,
   [LastName] nvarchar(255) NOT NULL,
   [Note] nvarchar(255),
@@ -47,7 +47,7 @@ CREATE TABLE [Tenant] (
 );
 
 CREATE TABLE [Property] (
-  [Id] integer PRIMARY KEY IDENTITY,
+  [Id] INTEGER NOT NULL PRIMARY KEY IDENTITY,
   [UserProfileId] integer NOT NULL,
   [Street] nvarchar(255) NOT NULL,
   [City] nvarchar(255) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE [Property] (
 );
 
 CREATE TABLE [Request] (
-  [Id] integer PRIMARY KEY,
+  [Id] INTEGER NOT NULL PRIMARY KEY IDENTITY,
   [PropertyId] integer NOT NULL,
   [Synopsis] nvarchar(255) NOT NULL,
   [Price] decimal,
@@ -97,7 +97,7 @@ CREATE TABLE [Request] (
 );
 
 CREATE TABLE [Payment] (
-  [Id] integer PRIMARY KEY,
+  [Id] INTEGER NOT NULL PRIMARY KEY IDENTITY,
   [PropertyId] integer NOT NULL,
   [TenantId] integer NOT NULL,
   [Date] datetime NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE [Payment] (
 );
 
 CREATE TABLE [Calendar] (
-  [Id] integer PRIMARY KEY,
+  [Id] INTEGER NOT NULL PRIMARY KEY IDENTITY,
   [PropertyId] integer NOT NULL,
   [TenantId] integer NOT NULL,
   [PaymentAmount] decimal,

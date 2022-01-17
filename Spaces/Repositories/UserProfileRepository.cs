@@ -36,17 +36,6 @@ namespace Spaces.Repositories
 
         public void Update(UserProfile userProfile)
         {
-            var local = _context.Set<Tenant>()
-                .Local
-                .FirstOrDefault(entry => entry.Id.Equals(userProfile.Id));
-
-            //check if local is null
-            if (local != null)
-            {
-                //  detach
-                _context.Entry(local).State = EntityState.Detached;
-            }
-
             _context.Entry(userProfile).State = EntityState.Modified;
             _context.SaveChanges();
         }

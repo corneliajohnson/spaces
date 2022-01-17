@@ -36,13 +36,7 @@ namespace Spaces.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, UserProfile userProfile)
         {
-            var up = _userProfileRepository.GetById(id);
-            if (up== null)
-            {
-                return NotFound();
-            }
-
-            if (id != up.Id)
+            if (id != userProfile.Id)
             {
                 return BadRequest();
             }
