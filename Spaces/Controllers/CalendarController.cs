@@ -56,7 +56,7 @@ namespace Spaces.Controllers
             return Ok(calendar);
         }
 
-        [HttpGet("{id}/user")]
+        [HttpGet("user/{id}")]
         public IActionResult GetByUserId(int id)
         {
             //check that user exist
@@ -69,7 +69,7 @@ namespace Spaces.Controllers
             return Ok(calendars);
         }
 
-        [HttpGet("{id}/tenant")]
+        [HttpGet("tenant/{id}")]
         public IActionResult GetByTenantId(int id)
         {
             //check that tenant exist
@@ -82,7 +82,7 @@ namespace Spaces.Controllers
             return Ok(calendars);
         }
 
-        [HttpGet("{id}/property")]
+        [HttpGet("property/{id}")]
         public IActionResult GetByPropertyId(int id)
         {
             //check that property exist
@@ -95,7 +95,7 @@ namespace Spaces.Controllers
             return Ok(calendars);
         }
 
-        [HttpGet("date")]
+        [HttpGet("date/{date}")]
         public IActionResult GetBydate(DateTime date)
         {
             var calendars = _calendarRepository.GetByDate(date);

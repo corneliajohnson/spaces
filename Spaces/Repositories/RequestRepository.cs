@@ -55,7 +55,7 @@ namespace Spaces.Repositories
         {
             return _context.Request
                 .Include(request => request.Property)
-                .FirstOrDefault(request => request.Property.UserProfileId == userId)
+                .Where(request => request.Property.UserProfileId == userId)
                 .ToList();
         }
 
@@ -63,7 +63,7 @@ namespace Spaces.Repositories
         {
             return _context.Request
                 .Include(request => request.Property)
-                .FirstOrDefault(request => request.PropertyId == propertyId)
+                .Where(request => request.PropertyId == propertyId)
                 .ToList();
         }
     }

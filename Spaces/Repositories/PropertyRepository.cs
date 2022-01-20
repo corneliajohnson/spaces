@@ -34,7 +34,7 @@ namespace Spaces.Repositories
                 //.Include(property => property.Calendars)
                 //.Include(property => property.Payments.OrderBy(property => property.Date))
                 //.Include(property => property.Requests.OrderBy(property => property.DateAdded))
-                .FirstOrDefault(property => property.Id == userId)
+                .Where(property => property.Id == userId)
                 .ToList();
         }
 

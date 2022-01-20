@@ -28,7 +28,7 @@ namespace Spaces.Repositories
             return _context.Calendar
                 .Include(calendar => calendar.Tenant)
                 .Include(calendar => calendar.Property)
-                .FirstOrDefault(calendar => calendar.TenantId == tentantId)
+                .Where(calendar => calendar.TenantId == tentantId)
                 .ToList();
         }
 
@@ -37,7 +37,7 @@ namespace Spaces.Repositories
             return _context.Calendar
                 .Include(calendar => calendar.Tenant)
                 .Include(calendar => calendar.Property)
-                .FirstOrDefault(calendar => calendar.PropertyId == propertyId)
+                .Where(calendar => calendar.PropertyId == propertyId)
                 .ToList();
         }
 
@@ -46,18 +46,20 @@ namespace Spaces.Repositories
             return _context.Calendar
                 .Include(calendar => calendar.Tenant)
                 .Include(calendar => calendar.Property)
-                .FirstOrDefault(calendar => calendar.Property.UserProfileId == userId)
+                .Where(calendar => calendar.Property.UserProfileId == userId)
                 .ToList();
         }
 
         public List<Calendar> GetByDate(DateTime date)
         {
-            DateTime day = date.Date;
+            int dateMonth = date.Month;
+            int dateDay = date.Day;
+            int dateYear = date.Year;
 
             return _context.Calendar
                 .Include(calendar => calendar.Tenant)
                 .Include(calendar => calendar.Property)
-                .FirstOrDefault(calendar => calendar.Date.Date == day)
+                .Where(calendar => calendar.Date.Day == dateDay && calendar.Date.Month == dateMonth && calendar.Date.Year == dateYear)
                 .ToList();
         }
 
