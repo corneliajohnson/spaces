@@ -34,7 +34,6 @@ namespace Spaces.Models
         public decimal ThirtyDayProfitLoss { get; set; }
         public decimal AllTimeProfitLoss { get; set; }
         public decimal AllTimeMaintenance { get; set; }
-
         internal List<Property> ToList()
         {
             throw new NotImplementedException();

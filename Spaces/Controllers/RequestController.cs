@@ -6,6 +6,8 @@ using System;
 
 namespace Spaces.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class RequestController : Controller
     {
         private readonly IRequestRepository _requestRepository;
