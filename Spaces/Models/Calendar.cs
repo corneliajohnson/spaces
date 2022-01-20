@@ -21,11 +21,11 @@ namespace Spaces.Models
         [Required]
         public bool IsSecurityDepositReturned { get; set; }
         public DateTime Date { get; set; }
+        public bool isActive { get; set; }
 
         internal List<Calendar> ToList()
         {
             throw new NotImplementedException();
         }
-        public bool isActive { get; set; }
     }
 }

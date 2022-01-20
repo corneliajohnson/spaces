@@ -35,6 +35,11 @@ namespace Spaces.Models
         public decimal AllTimeProfitLoss { get; set; }
         public decimal AllTimeMaintenance { get; set; }
 
+        internal List<Property> ToList()
+        {
+            throw new NotImplementedException();
+        }
+
         public decimal AllTimeMortageCost { get; set; }
         public decimal TwelveMonthProfit { get; set; }
         public decimal ThirtyDayProfit { get; set; }
