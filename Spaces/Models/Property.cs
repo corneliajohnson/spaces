@@ -19,7 +19,7 @@ namespace Spaces.Models
         [Required]
         public string State { get; set; }
         [Required]
-        public string Zip { get; set; }
+        public int Zip { get; set; }
         public decimal MonthlyMortageAmount { get; set; }
         public decimal SecurityDeposit { get; set; }
         public DateTime DateAcquired { get; set; }
@@ -35,11 +35,6 @@ namespace Spaces.Models
         public decimal AllTimeProfitLoss { get; set; }
         public decimal AllTimeMaintenance { get; set; }
 
-        internal List<Property> ToList()
-        {
-            throw new NotImplementedException();
-        }
-
         public decimal AllTimeMortageCost { get; set; }
         public decimal TwelveMonthProfit { get; set; }
         public decimal ThirtyDayProfit { get; set; }
@@ -48,9 +43,9 @@ namespace Spaces.Models
         public string CheckOutTime { get; set; }
         public string CheckInTime { get; set; }
 
-        public List<Payment> Payments { get; set; }
-        public List<Request> Requests { get; set; }
-        public List<Calendar> Calendars { get; set; }
+        //public List<Payment> Payments { get; set; }
+        //public List<Request> Requests { get; set; }
+        //public List<Calendar> Calendars { get; set; }
         public bool isActive { get; set; }
     }
 }

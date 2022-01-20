@@ -17,9 +17,9 @@ namespace Spaces.Models
         [Required]
         public bool IsPaidInFull { get; set; }
         [Required]
-        public bool IsSecuirtyDepositPaid { get; set; }
+        public bool IsSecurityDepositPaid { get; set; }
         [Required]
-        public bool IsSecuirtyDepositReturned { get; set; }
+        public bool IsSecurityDepositReturned { get; set; }
         public DateTime Date { get; set; }
 
         internal List<Calendar> ToList()

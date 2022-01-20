@@ -5,6 +5,8 @@ using Spaces.Repository;
 
 namespace Spaces.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class PropertyController : Controller
     {
         private readonly IPropertyRepository _propertyRepository;

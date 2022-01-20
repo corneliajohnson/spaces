@@ -20,20 +20,20 @@ namespace Spaces.Repositories
         public Property GetById(int id)
         {
             return _context.Property
-                .Include(property => property.Tenant)
-                .Include(property => property.Calendars)
-                .Include(property => property.Payments.OrderBy(property => property.Date))
-                .Include(property => property.Requests.OrderBy(property => property.DateAdded))
+               // .Include(property => property.Tenant)
+               // .Include(property => property.Calendars)
+                //.Include(property => property.Payments.OrderBy(property => property.Date))
+                //.Include(property => property.Requests.OrderBy(property => property.DateAdded))
                 .FirstOrDefault(property => property.Id == id);
         }
 
         public List<Property> GetByUserId(int userId)
         {
             return _context.Property
-                .Include(property => property.Tenant)
-                .Include(property => property.Calendars)
-                .Include(property => property.Payments.OrderBy(property => property.Date))
-                .Include(property => property.Requests.OrderBy(property => property.DateAdded))
+                //.Include(property => property.Tenant)
+                //.Include(property => property.Calendars)
+                //.Include(property => property.Payments.OrderBy(property => property.Date))
+                //.Include(property => property.Requests.OrderBy(property => property.DateAdded))
                 .FirstOrDefault(property => property.Id == userId)
                 .ToList();
         }

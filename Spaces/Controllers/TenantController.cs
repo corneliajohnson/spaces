@@ -4,6 +4,8 @@ using Spaces.Repositories;
 
 namespace Spaces.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class TenantController : Controller
     {
         private readonly ITenantRepository _tenantRepository;
